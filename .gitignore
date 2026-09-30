@@ -1,0 +1,29 @@
+# Scraped pages stay local: the study publishes only derived estimates
+# (see docs/design.md, decision 1).
+data/raw/
+data/*.log
+data/*.stdout
+
+# Tables parsed from scraped or third-party contract sources are not
+# derived estimates, so they stay local too: Basketball-Reference season,
+# salary, transaction, and draft tables; the contract labels (they carry
+# salaries); the panels built from them; Bender's and Wikipedia's contract
+# tables; and the hand-researched gold contract records.
+data/bbref_player_seasons.csv
+data/player_salaries.csv
+data/player_events.csv
+data/player_contract_now.csv
+data/player_draft.csv
+data/contract_labels.csv
+data/contract_labels_bbref.csv
+data/panel.csv
+data/panel_r.csv
+data/panel_fixed1000.csv
+data/bender_2017_18.csv
+data/wiki_signings.csv
+data/manual/gold/
+
+__pycache__/
+.pytest_cache/
+.venv/
+.DS_Store
