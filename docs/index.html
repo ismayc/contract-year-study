@@ -161,6 +161,21 @@ details.terms summary { padding: .55rem .9rem; cursor: pointer;
   color: var(--ink-2); font-weight: 600; }
 details.terms ul { margin: 0; padding: .2rem 1.4rem .8rem; }
 details.terms li { margin: .3rem 0; color: var(--ink-2); }
+/* sticky section nav (study pages): the masthead scrolls away, this stays */
+.sectionnav { position: sticky; top: 0; z-index: 30; background: var(--surface);
+  border-bottom: 1px solid var(--rule); }
+.sectionnav .inner { width: min(1200px, 94vw); margin: 0 auto; display: flex;
+  gap: 1.3rem; overflow-x: auto; white-space: nowrap; scrollbar-width: none;
+  padding: .55rem 0 .45rem; }
+.sectionnav .inner::-webkit-scrollbar { display: none; }
+.sectionnav a { font-family: "Barlow Condensed", system-ui, sans-serif;
+  font-weight: 500; font-size: .95rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--ink-3); text-decoration: none;
+  padding-bottom: .15rem; border-bottom: 2px solid transparent; }
+.sectionnav a:hover { color: var(--ink); }
+.sectionnav a[aria-current="true"] { color: var(--accent-ink);
+  border-bottom-color: var(--accent); }
+main [id] { scroll-margin-top: 3.6rem; }
 /* hub cards */
 .cards { display: grid; grid-template-columns:
   repeat(auto-fit, minmax(290px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
@@ -209,6 +224,7 @@ html.reveal .is-in { opacity: 1; transform: none; }
   <a href="https://github.com/ismayc/contract-year-study">Code on GitHub</a>
   <button class="themebtn" type="button" aria-label="Toggle color theme">◐</button>
 </div></header>
+<nav class="sectionnav" aria-label="Sections"><div class="inner"><a href="#the-question">The question</a><a href="#the-answer">The answer</a><a href="#stress-test">Stress test</a><a href="#afterward">Afterward</a><a href="#limits">Limits</a><a href="#method-code-and-verification">Method</a></div></nav>
 <main>
 <div class="eyebrow">27 seasons of NBA free agency</div>
 <h1>Do NBA players play better in contract years?</h1>
@@ -233,7 +249,7 @@ Stars show none, and if anything slip.</p>
 <div class="sub">Seasons where the player's deal was certain to continue.</div></div>
 </div>
 
-<div class="eyebrow beat">The question</div>
+<div class="eyebrow beat" id="the-question">The question</div>
 
 <h2>Why this is harder than it looks</h2>
 <p>Two things make a naive comparison wrong. The first is regression to the
@@ -247,7 +263,7 @@ the league average and adjusted for age. A contract-year effect has to show
 up on top of both. Players are grouped into four tiers (stars, starters,
 role players, and fringe players) by their value in the two seasons
 before, never by the contract year itself.</p>
-<div class="eyebrow beat">The answer</div>
+<div class="eyebrow beat" id="the-answer">The answer</div>
 
 <h2>Role players rise a little; stars do not</h2>
 <figure class="figure-card"><iframe src="figures/fig1_tier_effects_py.html" loading="lazy" style="height:456px" title="Tier effects"></iframe><figcaption>Contract-year difference by tier, with two independent estimates. The first compares contract years with guaranteed years across players, with an interval from resampling players. The second compares each player only with their own other seasons. Role players land above zero in both (+0.21 and +0.37). Stars land at or below zero in both (−0.25 and −0.34). Pooling every tier hides the split: the all-tier difference is −0.06 (−0.15 to +0.03).</figcaption></figure>
@@ -256,7 +272,7 @@ Plus/Minus per 100 possessions is small: a real effect, not a
 transformation. For stars the estimate points the other way. One possible
 reading is that stars have little to prove and a lot to protect, but the
 data here can only say that no boost shows up.</p>
-<div class="eyebrow beat">Stress test</div>
+<div class="eyebrow beat" id="stress-test">Stress test</div>
 
 <h2>The pattern survives every specification</h2>
 <p>The analysis plan was written before any contract-year comparison was run,
@@ -268,13 +284,13 @@ secondary outcomes checked across five tier groups, only two survive a
 correction for multiple comparisons, both across all tiers: players appear
 in +1.73 more games than their age alone predicts, and their true shooting
 rises by +0.32 percentage points.</p>
-<div class="eyebrow beat">Afterward</div>
+<div class="eyebrow beat" id="afterward">Afterward</div>
 
 <h2>The season after</h2>
 <p>A contract year is also a sorting event. Of the contract-year role players,
 20% never played another NBA season (stars: 10%).</p>
 <figure class="figure-card"><iframe src="figures/fig3_season_after_py.html" loading="lazy" style="height:396px" title="Season after"></iframe><figcaption>Next-season Box Plus/Minus against expectation, for players who played at least 250 minutes the following season. Stars, starters, and role players coming off a contract year do worse the next season than players coming off a guaranteed year (role players: −0.02 against +0.11). Fringe players are level. This is descriptive: the players who returned after a contract year are a selected group, since the market has just decided who got a new deal.</figcaption></figure>
-<div class="eyebrow beat">Limits</div>
+<div class="eyebrow beat" id="limits">Limits</div>
 
 <h2>What the labels can and cannot support</h2>
 <p>No public source lists contract status as a clean field, so every season is
@@ -289,7 +305,7 @@ because their labels could not be checked against independent records.</p>
 <p>Performance comes from Basketball-Reference, cross-checked season by season
 against stats.nba.com before any modeling. The raw pages stay local; only
 derived estimates are published.</p>
-<h2>Method, code, and verification</h2><p>The full technical write-up (data provenance, model specification, validation gates, and stated limitations) is the <a href="https://github.com/ismayc/contract-year-study#readme">README</a>. The analysis is implemented independently in R and Python and reconciled to numeric tolerance; <code>run_checks.sh</code> replays every gate.</p>
+<h2 id="method-code-and-verification">Method, code, and verification</h2><p>The full technical write-up (data provenance, model specification, validation gates, and stated limitations) is the <a href="https://github.com/ismayc/contract-year-study#readme">README</a>. The analysis is implemented independently in R and Python and reconciled to numeric tolerance; <code>run_checks.sh</code> replays every gate.</p>
 </main>
 <footer>Public data · dual-implementation reconciled · every gate scripted ·
 <a href="https://github.com/ismayc/basketball-data-science">the family on GitHub</a></footer>
@@ -347,6 +363,46 @@ derived estimates are published.</p>
   }, {threshold: 0.08, rootMargin: "0px 0px -6% 0px"});
   Array.prototype.forEach.call(els, function (el) { io.observe(el); });
   window.__revealReady = true;
+})();
+</script>
+<script>
+(function () {
+  var nav = document.querySelector(".sectionnav");
+  if (!nav) { return; }
+  var links = Array.prototype.slice.call(nav.querySelectorAll("a"));
+  var row = nav.querySelector(".inner");
+  var targets = links.map(function (a) {
+    return document.getElementById(a.getAttribute("href").slice(1));
+  });
+  var last = null;
+  function update() {
+    var edge = nav.getBoundingClientRect().bottom + 24, cur = -1;
+    targets.forEach(function (t, i) {
+      if (t && t.getBoundingClientRect().top <= edge) { cur = i; }
+    });
+    // At the foot of the page the last sections are too short to reach the
+    // bar, so the final one counts as current there.
+    var de = document.documentElement;
+    if (window.scrollY + window.innerHeight >= de.scrollHeight - 2) { cur = targets.length - 1; }
+    if (cur === last) { return; }
+    last = cur;
+    links.forEach(function (a, i) {
+      if (i === cur) { a.setAttribute("aria-current", "true"); }
+      else { a.removeAttribute("aria-current"); }
+    });
+    var a = links[cur];
+    if (a && row) {
+      var l = a.offsetLeft, r = l + a.offsetWidth;
+      if (l < row.scrollLeft || r > row.scrollLeft + row.clientWidth) {
+        row.scrollLeft = Math.max(0, l - 16);
+      }
+    }
+  }
+  // Straight from the event, not via requestAnimationFrame, which stalls in
+  // background tabs and offscreen frames; eight rect reads per scroll is cheap.
+  window.addEventListener("scroll", update, {passive: true});
+  window.addEventListener("resize", update);
+  update();
 })();
 </script>
 </body>
