@@ -35,9 +35,16 @@ are already rising or falling.
 So the outcome here is not raw Box Plus/Minus. It is Box Plus/Minus against
 an expectation built only from the player's earlier seasons, pulled toward
 the league average and adjusted for age. A contract-year effect has to show
-up on top of both. Players are grouped into four tiers (stars, starters,
-role players, and fringe players) by their value in the two seasons
-before, never by the contract year itself.
+up on top of both.
+
+{{svg:dg1_expectation|One real season scored the way the study scores every season. Julius Randle's season here came right after his best one. The dashed gray drop is the naive change from the year before; the red segment is the residual against an expectation built from his three prior seasons, which already allows for a fall back toward average. The example shows the scoring only and says nothing about his contract.}}
+
+Players are grouped into four tiers (stars, starters, role players, and
+fringe players) by their value in the two seasons before, never by the
+contract year itself. The map below lines these pieces up season by season
+and shows where each result in this story comes from.
+
+{{svg:dg2_study_map|The study in one picture. The seasons before set each player's expectation and tier, the season itself is where contract years and guaranteed years are compared, and the season after shows who returned and how they played. Each result on the map has its own section below.}}
 
 <div class="eyebrow beat">The answer</div>
 
@@ -89,6 +96,8 @@ before about 2012. Mislabeled seasons mostly blur a real effect toward
 zero, so the role-player estimate is more likely understated than
 overstated. Earlier eras are reported in the README for context only,
 because their labels could not be checked against independent records.
+
+{{svg:dg3_labels|How a season gets its label and how the labels were checked. Each dot is one percent of the seasons a reference knows were contract years, colored by what the labeler called them. Most misses are "unknown", which leaves the season out of both groups, and few true contract years land in the guaranteed group. Labels for the older seasons are right less often.}}
 
 Performance comes from Basketball-Reference, cross-checked season by season
 against stats.nba.com before any modeling. The raw pages stay local; only

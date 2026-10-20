@@ -69,7 +69,7 @@ def fig_tiers(prim: pl.DataFrame) -> go.Figure:
         error_x=dict(type="data", array=[Z * r["fe_se"] for r in rows]),
         hovertemplate="%{y}, within-player: %{x:+.2f} BPM<extra></extra>"))
     f.update_layout(**base_layout(
-        "Contract-year boost by tier, 1999-00 to 2025-26",
+        "Role players gain a little in contract years; stars do not",
         "Box Plus/Minus against expectation, contract year minus comparison",
         440), shapes=[zero_line()])
     return f
@@ -98,7 +98,7 @@ def fig_sensitivity(prim, sens, fixed) -> go.Figure:
             error_x=dict(type="data", symmetric=False, array=hi, arrayminus=lo),
             hovertemplate=f"{TIER_NAME[tier]}, %{{y}}: %{{x:+.2f}} BPM<extra></extra>"))
     f.update_layout(**base_layout(
-        "Does it hold up? Role players and stars under each specification",
+        "Role players stay above zero under every specification",
         "Contract-year difference in Box Plus/Minus (95% interval)", 420),
         shapes=[zero_line()])
     return f

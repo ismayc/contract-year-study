@@ -40,3 +40,7 @@ $PY python/12_reconcile.py | tail -1
 echo
 echo "=== findings: README numbers regenerate from outputs ==="
 $PY python/13_findings.py --check
+
+echo
+echo "=== diagrams: every explainer SVG rebuilds identically ==="
+$PY -I python/15_diagrams.py --check | tail -1
